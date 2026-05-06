@@ -1,3 +1,8 @@
+const polishStylesheet = document.createElement('link');
+polishStylesheet.rel = 'stylesheet';
+polishStylesheet.href = 'styles-polish.css';
+document.head.appendChild(polishStylesheet);
+
 const navButtons = document.querySelectorAll('.nav-card, .bottom-nav-btn');
 const sections = document.querySelectorAll('.content-section');
 
