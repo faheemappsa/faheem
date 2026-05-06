@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>فهيم | مساعد يومي لفهم السكر والكارب</title>
     <meta
       name="description"
       content="فهيم تطبيق ويب عربي يساعد أسر أطفال السكري على فهم قراءات السكر، حساب كارب الوجبات، وملاحظة الأنماط اليومية بطريقة بسيطة ومطمئنة."
     />
+
     <meta property="og:title" content="فهيم | مساعد يومي لفهم السكر والكارب" />
     <meta
       property="og:description"
@@ -15,124 +17,376 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ar_SA" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    <header class="app-header" aria-label="رأس التطبيق">
-      <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" role="img">
-          <path d="M12 12h40a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8H30l-12 10v-10h-6a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8z" />
-          <path d="M16 32h8l4-7 6 14 5-10 4 3h5" class="pulse-line" />
-        </svg>
-      </div>
-      <div class="brand-copy">
-        <h1>فهيم</h1>
-        <p class="brand-en">FAHEEM</p>
-        <p class="tagline">افهم يومك ببساطة</p>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="hero-greeting">صباحك أهدأ مع فهيم</p>
-        <h2 id="hero-title">افهم قراءتك وكارب وجبتك بثقة وهدوء</h2>
-        <p class="hero-support">فهيم يساعدك ترتب يوم السكري، تفهم قراءاتك، وتحسب كارب وجبتك بسرعة مطمئنة.</p>
-        <p class="safety-note">فهيم يساعدك تفهم وتنظم، لكنه لا يستبدل الطبيب أو الفريق الصحي.</p>
-        <article class="smart-card hero-smart-card" aria-label="بطاقة رؤية اليوم">
-          <h3>لمحة اليوم الذكية</h3>
-          <p>سجّل القراءة، راقب الاتجاه، وخذ فكرة واضحة قبل خطوتك التالية.</p>
-        </article>
-      </section>
-
-      <section class="nav-cards" aria-label="التنقل الرئيسي">
-        <button class="nav-card is-active" data-target="daily-pulse" type="button" aria-pressed="true">
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M3 12h4l2.2-4 3.3 8 2.4-5H21"/></svg>
-          </span>
-          <strong>نبض يومك</strong>
-          <p>سجّل قراءة السكر وافهم نبض يومك.</p>
+    <div class="app-shell">
+      <header class="topbar" aria-label="رأس التطبيق">
+        <button class="icon-button" type="button" aria-label="القائمة">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 7h14M5 12h9M5 17h14" />
+          </svg>
         </button>
-        <button class="nav-card" data-target="carb-search" type="button" aria-pressed="false">
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg>
-          </span>
-          <strong>كم كارب؟</strong>
-          <p>ابحث عن الأكل واحسب الكارب بسرعة.</p>
-        </button>
-        <button class="nav-card" data-target="faheem-plus" type="button" aria-pressed="false">
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="8"/></svg>
-          </span>
-          <strong>فهيم بلس</strong>
-          <p>اسأل فهيم وافهم أنماط يومك.</p>
-        </button>
-      </section>
 
-      <section id="daily-pulse" class="content-section is-visible" aria-labelledby="daily-title">
-        <h3 id="daily-title">نبض يومك</h3>
-        <p>مساحة يومية بسيطة لإدخال قراءة السكر وفهم اتجاه اليوم بشكل أوضح.</p>
-        <article class="placeholder-card">
-          <label for="reading-input">مثال إدخال القراءة</label>
-          <input id="reading-input" type="text" placeholder="أدخل قراءة السكر" disabled />
-          <article class="smart-card compact-smart-card">
-            <h4>بطاقة فهيم الذكية</h4>
-            <p>ملخص سريع للاتجاه اليومي بلغة مطمئنة وسهلة الفهم.</p>
+        <div class="brand-lockup" aria-label="فهيم">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32">
+              <path d="M7 8h18a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-9l-6 5v-5H7a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" />
+              <path class="pulse-line" d="M8 16h4l2-4 3 8 2.2-4H24" />
+            </svg>
+          </div>
+
+          <div>
+            <h1>فهيم</h1>
+            <p>افهم يومك ببساطة</p>
+          </div>
+        </div>
+
+        <button class="icon-button" type="button" aria-label="التنبيهات">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2Z" />
+            <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+          </svg>
+        </button>
+      </header>
+
+      <main>
+        <section id="daily-pulse" class="content-section is-visible" aria-labelledby="daily-title">
+          <div class="screen-heading">
+            <p>صباحك أهدأ مع فهيم</p>
+            <h2 id="daily-title">ملخص يوم السكري</h2>
+          </div>
+
+          <article class="overview-card" aria-label="ملخص اليوم">
+            <div class="overview-head">
+              <div>
+                <span class="eyebrow">ملخص اليوم</span>
+                <h3>ابدأ أول قراءة</h3>
+              </div>
+
+              <span class="status-chip">
+                <span></span>
+                جاهز للتسجيل
+              </span>
+            </div>
+
+            <div class="reading-row">
+              <strong>--</strong>
+              <span>mg/dL</span>
+            </div>
+
+            <p class="overview-note">
+              سجّل قراءتك الأولى عشان فهيم يبدأ يفهم يومك.
+            </p>
+
+            <div class="mini-chart" aria-hidden="true">
+              <svg viewBox="0 0 320 96" preserveAspectRatio="none">
+                <path class="grid-line" d="M0 24H320M0 52H320M0 80H320" />
+                <path
+                  class="trend-fill"
+                  d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44V96H0Z"
+                />
+                <path
+                  class="trend-line"
+                  d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44"
+                />
+                <circle cx="276" cy="36" r="5" />
+              </svg>
+            </div>
+
+            <div class="overview-stats">
+              <div>
+                <span>آخر قراءة</span>
+                <strong>--</strong>
+              </div>
+              <div>
+                <span>الاتجاه</span>
+                <strong>مستقر</strong>
+              </div>
+              <div>
+                <span>ملاحظة اليوم</span>
+                <strong>بانتظارك</strong>
+              </div>
+            </div>
           </article>
-          <p>سيتم لاحقًا إضافة السياق، المتوسط، الاتجاه، وملاحظة ذكية لليوم.</p>
-        </article>
-      </section>
 
-      <section id="carb-search" class="content-section" aria-labelledby="carb-title" hidden>
-        <h3 id="carb-title">كم كارب؟</h3>
-        <p>واجهة سريعة للبحث عن الأكل وحساب تقدير الكارب لكل وجبة.</p>
-        <article class="placeholder-card">
-          <label for="food-search">بحث الوجبة</label>
-          <input id="food-search" type="search" placeholder="وش الأكل؟" disabled />
-          <article class="smart-card compact-smart-card">
-            <h4>نتيجة الكارب السريعة</h4>
-            <p>عرض مباشر للقيمة التقديرية مع وحدة واضحة ودرجة ثقة مفهومة.</p>
+          <div class="metric-grid" aria-label="مؤشرات مختصرة">
+            <article class="metric-card">
+              <span class="metric-icon blue">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 12h4l2-5 4 10 2-5h4" />
+                </svg>
+              </span>
+              <p>قراءة السكر</p>
+              <strong>--</strong>
+              <small>mg/dL</small>
+            </article>
+
+            <article class="metric-card">
+              <span class="metric-icon coral">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6 10h12l-1 9H7l-1-9Z" />
+                  <path d="M8 10a4 4 0 0 1 8 0" />
+                </svg>
+              </span>
+              <p>كارب الوجبة</p>
+              <strong>--</strong>
+              <small>جرام</small>
+            </article>
+
+            <article class="metric-card">
+              <span class="metric-icon green">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 16 9 11l4 4 7-7" />
+                  <path d="M15 8h5v5" />
+                </svg>
+              </span>
+              <p>الاتجاه</p>
+              <strong>هادئ</strong>
+              <small>مبدئي</small>
+            </article>
+          </div>
+
+          <div class="module-card input-module">
+            <div class="module-title">
+              <div>
+                <h3>إدخال قراءة جديدة</h3>
+                <p>تسجيل سريع وآمن بدون أي قرار طبي.</p>
+              </div>
+
+              <span class="round-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </div>
+
+            <label for="reading-input">قراءة السكر</label>
+
+            <div class="input-shell">
+              <input id="reading-input" type="text" placeholder="-- mg/dL" disabled />
+              <span>mg/dL</span>
+            </div>
+
+            <div class="context-chips" aria-label="سياق القراءة">
+              <span>صيام</span>
+              <span>قبل الأكل</span>
+              <span>بعد الأكل</span>
+              <span>نشاط</span>
+            </div>
+          </div>
+
+          <article class="insight-card">
+            <span class="round-icon green">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />
+              </svg>
+            </span>
+
+            <div>
+              <h3>ملاحظة فهيم</h3>
+              <p>
+                فهيم يساعدك تلاحظ النمط، لكن أي قرار علاجي يبقى مع الطبيب أو الفريق الصحي.
+              </p>
+            </div>
           </article>
-          <p>سيتم لاحقًا ربط البحث بالمكتبة الداخلية وإظهار نتائج بثقة واضحة.</p>
-        </article>
-      </section>
+        </section>
 
-      <section id="faheem-plus" class="content-section" aria-labelledby="plus-title" hidden>
-        <h3 id="plus-title">فهيم بلس</h3>
-        <p>ركن تفاعلي لفهم الأنماط اليومية عبر أسئلة واضحة ومبسطة.</p>
-        <article class="placeholder-card">
-          <label for="plus-prompt">مساحة السؤال</label>
-          <textarea id="plus-prompt" placeholder="اسأل فهيم" disabled></textarea>
-          <article class="smart-card compact-smart-card">
-            <h4>اسأل فهيم</h4>
-            <p>بطاقة جواب هادئة تشرح الأنماط اليومية بطريقة ذكية وواضحة.</p>
+        <section id="carb-search" class="content-section" aria-labelledby="carb-title" hidden>
+          <div class="screen-heading">
+            <p>بحث سريع ونتيجة أوضح</p>
+            <h2 id="carb-title">كم كارب؟</h2>
+          </div>
+
+          <article class="module-card search-module">
+            <label for="food-search">وش الأكل؟</label>
+
+            <div class="search-shell">
+              <input id="food-search" type="search" placeholder="ابحث عن الأكل أو المنتج" disabled />
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6" />
+                <path d="m20 20-4.2-4.2" />
+              </svg>
+            </div>
+
+            <div class="context-chips">
+              <span>رز</span>
+              <span>خبز</span>
+              <span>حليب</span>
+              <span>فواكه</span>
+            </div>
           </article>
-          <p>سيتم لاحقًا دعم إجابات محلية مبنية على بياناتك اليومية داخل الجهاز.</p>
-        </article>
-      </section>
-    </main>
 
-    <nav class="bottom-nav" aria-label="التنقل السفلي">
-      <div class="bottom-nav-shell">
-        <button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true">
-          <span aria-hidden="true">⌁</span>
-          <span>نبض يومك</span>
-        </button>
-        <button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false">
-          <span aria-hidden="true">◔</span>
-          <span>كم كارب؟</span>
-        </button>
-        <button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false">
-          <span aria-hidden="true">✦</span>
-          <span>فهيم بلس</span>
-        </button>
-      </div>
-    </nav>
+          <article class="food-result-card">
+            <div class="food-visual" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 14h14a7 7 0 0 1-14 0Z" />
+                <path d="M8 10c2-3 6-3 8 0" />
+              </svg>
+            </div>
+
+            <div class="food-copy">
+              <span class="eyebrow">نتيجة سريعة</span>
+              <h3>أرز أبيض مطبوخ</h3>
+              <p>تقدير أولي قابل للتعديل حسب الكمية.</p>
+            </div>
+
+            <div class="food-number">
+              <strong>45</strong>
+              <span>جم كارب</span>
+            </div>
+          </article>
+
+          <div class="basket-card">
+            <div class="module-title">
+              <h3>سلة الوجبة</h3>
+              <a href="#">مسح الكل</a>
+            </div>
+
+            <div class="basket-row">
+              <span>أرز أبيض مطبوخ</span>
+              <strong>45 جم</strong>
+            </div>
+
+            <div class="basket-row muted">
+              <span>دجاج مشوي</span>
+              <strong>0 جم</strong>
+            </div>
+
+            <div class="total-strip">
+              <span>إجمالي الكارب</span>
+              <strong>45 جم</strong>
+            </div>
+          </div>
+
+          <article class="confidence-card">
+            <div>
+              <h3>درجة الثقة</h3>
+              <p>القيمة تقديرية وتختلف حسب التحضير والكمية.</p>
+            </div>
+
+            <div class="confidence-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </article>
+        </section>
+
+        <section id="faheem-plus" class="content-section" aria-labelledby="plus-title" hidden>
+          <div class="screen-heading">
+            <p>مساعد فهم يومي</p>
+            <h2 id="plus-title">فهيم بلس</h2>
+          </div>
+
+          <article class="assistant-card">
+            <div class="assistant-head">
+              <span class="round-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 6h14v10H9l-4 4V6Z" />
+                  <path d="M9 10h6M9 13h4" />
+                </svg>
+              </span>
+
+              <div>
+                <h3>اسأل فهيم</h3>
+                <p>اكتب سؤالك عن قراءاتك أو كارب وجبتك.</p>
+              </div>
+            </div>
+
+            <textarea id="plus-prompt" placeholder="اسأل فهيم..." disabled></textarea>
+
+            <div class="suggestion-row">
+              <span>ليش ارتفع السكر؟</span>
+              <span>وش معنى الاتجاه؟</span>
+              <span>هل وجبتي عالية؟</span>
+            </div>
+          </article>
+
+          <article class="answer-card">
+            <span class="eyebrow">إجابة تجريبية</span>
+            <h3>ليش يرتفع السكر بعد الأكل؟</h3>
+            <p>
+              يرتفع السكر بعد الأكل لأن الكربوهيدرات تتحول إلى جلوكوز. فهيم يساعدك تربط الوجبة والوقت والقراءة اللاحقة لفهم النمط.
+            </p>
+            <small>معلومة عامة للتنظيم والفهم، وليست نصيحة علاجية.</small>
+          </article>
+
+          <div class="metric-grid plus-metrics">
+            <article class="metric-card">
+              <span class="metric-icon blue">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 18c4-7 8-7 16-12" />
+                  <path d="M15 6h5v5" />
+                </svg>
+              </span>
+              <p>النمط</p>
+              <strong>مبدئي</strong>
+              <small>ينتظر بيانات</small>
+            </article>
+
+            <article class="metric-card">
+              <span class="metric-icon coral">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 8v5l3 2" />
+                </svg>
+              </span>
+              <p>وقت التكرار</p>
+              <strong>--</strong>
+              <small>غير متاح</small>
+            </article>
+
+            <article class="metric-card">
+              <span class="metric-icon green">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </span>
+              <p>ثقتك</p>
+              <strong>هادئة</strong>
+              <small>ابدأ التسجيل</small>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="التنقل السفلي">
+        <div class="bottom-nav-shell">
+          <button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h4l2-5 4 10 2-5h4" />
+            </svg>
+            <span>نبض يومك</span>
+          </button>
+
+          <button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 10h12l-1 9H7l-1-9Z" />
+              <path d="M8 10a4 4 0 0 1 8 0" />
+            </svg>
+            <span>كم كارب؟</span>
+          </button>
+
+          <button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 6h14v10H9l-4 4V6Z" />
+              <path d="M12 9v5M9.5 11.5h5" />
+            </svg>
+            <span>فهيم بلس</span>
+          </button>
+        </div>
+      </nav>
+    </div>
 
     <script src="app.js"></script>
   </body>
