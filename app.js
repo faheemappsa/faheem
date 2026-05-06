@@ -1,3 +1,15 @@
+const googleAnalyticsScript = document.createElement('script');
+googleAnalyticsScript.async = true;
+googleAnalyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-B20GWHW0NW';
+document.head.appendChild(googleAnalyticsScript);
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){
+  dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'G-B20GWHW0NW');
+
 const polishStylesheet = document.createElement('link');
 polishStylesheet.rel = 'stylesheet';
 polishStylesheet.href = 'styles-polish.css';
