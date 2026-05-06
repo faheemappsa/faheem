@@ -27,9 +27,7 @@
     <header class="app-header" aria-label="رأس التطبيق">
       <div class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" role="img">
-          <path
-            d="M12 12h40a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8H30l-12 10v-10h-6a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8z"
-          />
+          <path d="M12 12h40a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8H30l-12 10v-10h-6a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8z" />
           <path d="M16 32h8l4-7 6 14 5-10 4 3h5" class="pulse-line" />
         </svg>
       </div>
@@ -43,30 +41,34 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <p class="hero-greeting">صباحك أهدأ مع فهيم</p>
-        <h2 id="hero-title">افهم قراءتك وكارب وجبتك ببساطة</h2>
-        <p class="hero-support">
-          فهيم يساعدك ترتب يوم السكري، تفهم قراءاتك، وتحسب كارب وجبتك بسرعة وطمأنينة.
-        </p>
-        <p class="safety-note">فهيم يساعدك تفهم وتنظم، لكنه لا يستبدل الطبيب.</p>
+        <h2 id="hero-title">افهم قراءتك وكارب وجبتك بثقة وهدوء</h2>
+        <p class="hero-support">فهيم يساعدك ترتب يوم السكري، تفهم قراءاتك، وتحسب كارب وجبتك بسرعة مطمئنة.</p>
+        <p class="safety-note">فهيم يساعدك تفهم وتنظم، لكنه لا يستبدل الطبيب أو الفريق الصحي.</p>
         <article class="smart-card hero-smart-card" aria-label="بطاقة رؤية اليوم">
-          <h3>قراءة اليوم تبدأ من هنا</h3>
-          <p>سجّل، افهم، وخلك مطمئن.</p>
+          <h3>لمحة اليوم الذكية</h3>
+          <p>سجّل القراءة، راقب الاتجاه، وخذ فكرة واضحة قبل خطوتك التالية.</p>
         </article>
       </section>
 
       <section class="nav-cards" aria-label="التنقل الرئيسي">
         <button class="nav-card is-active" data-target="daily-pulse" type="button" aria-pressed="true">
-          <span class="card-icon" aria-hidden="true">♡</span>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 12h4l2.2-4 3.3 8 2.4-5H21"/></svg>
+          </span>
           <strong>نبض يومك</strong>
           <p>سجّل قراءة السكر وافهم نبض يومك.</p>
         </button>
         <button class="nav-card" data-target="carb-search" type="button" aria-pressed="false">
-          <span class="card-icon" aria-hidden="true">⌕</span>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg>
+          </span>
           <strong>كم كارب؟</strong>
           <p>ابحث عن الأكل واحسب الكارب بسرعة.</p>
         </button>
         <button class="nav-card" data-target="faheem-plus" type="button" aria-pressed="false">
-          <span class="card-icon" aria-hidden="true">✦</span>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="8"/></svg>
+          </span>
           <strong>فهيم بلس</strong>
           <p>اسأل فهيم وافهم أنماط يومك.</p>
         </button>
@@ -78,9 +80,9 @@
         <article class="placeholder-card">
           <label for="reading-input">مثال إدخال القراءة</label>
           <input id="reading-input" type="text" placeholder="أدخل قراءة السكر" disabled />
-          <article class="smart-card">
+          <article class="smart-card compact-smart-card">
             <h4>بطاقة فهيم الذكية</h4>
-            <p>ملخص بصري سريع للاتجاه اليومي مع لغة مطمئنة وسهلة الفهم.</p>
+            <p>ملخص سريع للاتجاه اليومي بلغة مطمئنة وسهلة الفهم.</p>
           </article>
           <p>سيتم لاحقًا إضافة السياق، المتوسط، الاتجاه، وملاحظة ذكية لليوم.</p>
         </article>
@@ -92,7 +94,7 @@
         <article class="placeholder-card">
           <label for="food-search">بحث الوجبة</label>
           <input id="food-search" type="search" placeholder="وش الأكل؟" disabled />
-          <article class="smart-card">
+          <article class="smart-card compact-smart-card">
             <h4>نتيجة الكارب السريعة</h4>
             <p>عرض مباشر للقيمة التقديرية مع وحدة واضحة ودرجة ثقة مفهومة.</p>
           </article>
@@ -106,7 +108,7 @@
         <article class="placeholder-card">
           <label for="plus-prompt">مساحة السؤال</label>
           <textarea id="plus-prompt" placeholder="اسأل فهيم" disabled></textarea>
-          <article class="smart-card">
+          <article class="smart-card compact-smart-card">
             <h4>اسأل فهيم</h4>
             <p>بطاقة جواب هادئة تشرح الأنماط اليومية بطريقة ذكية وواضحة.</p>
           </article>
@@ -116,9 +118,20 @@
     </main>
 
     <nav class="bottom-nav" aria-label="التنقل السفلي">
-      <button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true">نبض يومك</button>
-      <button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false">كم كارب؟</button>
-      <button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false">فهيم بلس</button>
+      <div class="bottom-nav-shell">
+        <button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true">
+          <span aria-hidden="true">⌁</span>
+          <span>نبض يومك</span>
+        </button>
+        <button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false">
+          <span aria-hidden="true">◔</span>
+          <span>كم كارب؟</span>
+        </button>
+        <button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false">
+          <span aria-hidden="true">✦</span>
+          <span>فهيم بلس</span>
+        </button>
+      </div>
     </nav>
 
     <script src="app.js"></script>
