@@ -5,389 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>فهيم | مساعد يومي لفهم السكر والكارب</title>
-    <meta
-      name="description"
-      content="فهيم تطبيق ويب عربي يساعد أسر أطفال السكري على فهم قراءات السكر، حساب كارب الوجبات، وملاحظة الأنماط اليومية بطريقة بسيطة ومطمئنة."
-    />
-
+    <meta name="description" content="فهيم تطبيق ويب عربي يساعد أسر أطفال السكري على فهم قراءات السكر، حساب كارب الوجبات، وملاحظة الأنماط اليومية بطريقة بسيطة ومطمئنة." />
     <meta property="og:title" content="فهيم | مساعد يومي لفهم السكر والكارب" />
-    <meta
-      property="og:description"
-      content="فهيم تطبيق ويب عربي يساعد أسر أطفال السكري على فهم قراءات السكر، حساب كارب الوجبات، وملاحظة الأنماط اليومية بطريقة بسيطة ومطمئنة."
-    />
+    <meta property="og:description" content="فهيم تطبيق ويب عربي يساعد أسر أطفال السكري على فهم قراءات السكر، حساب كارب الوجبات، وملاحظة الأنماط اليومية بطريقة بسيطة ومطمئنة." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ar_SA" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <div class="app-shell">
       <header class="topbar" aria-label="رأس التطبيق">
-        <button class="icon-button" type="button" aria-label="القائمة">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 7h14M5 12h9M5 17h14" />
-          </svg>
-        </button>
-
-        <div class="brand-lockup" aria-label="فهيم">
-          <div class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32">
-              <path d="M7 8h18a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-9l-6 5v-5H7a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" />
-              <path class="pulse-line" d="M8 16h4l2-4 3 8 2.2-4H24" />
-            </svg>
-          </div>
-
-          <div>
-            <h1>فهيم</h1>
-            <p>افهم يومك ببساطة</p>
-          </div>
-        </div>
-
-        <button class="icon-button" type="button" aria-label="التنبيهات">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2Z" />
-            <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
-          </svg>
-        </button>
+        <button class="icon-button" type="button" aria-label="القائمة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h9M5 17h14" /></svg></button>
+        <div class="brand-lockup" aria-label="فهيم"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 8h18a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-9l-6 5v-5H7a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" /><path class="pulse-line" d="M8 16h4l2-4 3 8 2.2-4H24" /></svg></div><div><h1>فهيم</h1><p>افهم يومك ببساطة</p></div></div>
+        <button class="icon-button" type="button" aria-label="التنبيهات"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2Z" /><path d="M9.5 20a2.5 2.5 0 0 0 5 0" /></svg></button>
       </header>
 
       <main>
         <section id="daily-pulse" class="content-section is-visible" aria-labelledby="daily-title">
-          <div class="screen-heading">
-            <p>صباحك أهدأ مع فهيم</p>
-            <h2 id="daily-title">ملخص يوم السكري</h2>
-          </div>
-
-          <article class="overview-card" aria-label="ملخص اليوم">
-            <div class="overview-head">
-              <div>
-                <span class="eyebrow">ملخص اليوم</span>
-                <h3>ابدأ أول قراءة</h3>
-              </div>
-
-              <span class="status-chip">
-                <span></span>
-                جاهز للتسجيل
-              </span>
-            </div>
-
-            <div class="reading-row">
-              <strong>--</strong>
-              <span>mg/dL</span>
-            </div>
-
-            <p class="overview-note">
-              سجّل قراءتك الأولى عشان فهيم يبدأ يفهم يومك.
-            </p>
-
-            <div class="mini-chart" aria-hidden="true">
-              <svg viewBox="0 0 320 96" preserveAspectRatio="none">
-                <path class="grid-line" d="M0 24H320M0 52H320M0 80H320" />
-                <path
-                  class="trend-fill"
-                  d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44V96H0Z"
-                />
-                <path
-                  class="trend-line"
-                  d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44"
-                />
-                <circle cx="276" cy="36" r="5" />
-              </svg>
-            </div>
-
-            <div class="overview-stats">
-              <div>
-                <span>آخر قراءة</span>
-                <strong>--</strong>
-              </div>
-              <div>
-                <span>الاتجاه</span>
-                <strong>مستقر</strong>
-              </div>
-              <div>
-                <span>ملاحظة اليوم</span>
-                <strong>بانتظارك</strong>
-              </div>
-            </div>
-          </article>
-
-          <div class="metric-grid" aria-label="مؤشرات مختصرة">
-            <article class="metric-card">
-              <span class="metric-icon blue">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 12h4l2-5 4 10 2-5h4" />
-                </svg>
-              </span>
-              <p>قراءة السكر</p>
-              <strong>--</strong>
-              <small>mg/dL</small>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-icon coral">
-                <svg viewBox="0 0 24 24">
-                  <path d="M6 10h12l-1 9H7l-1-9Z" />
-                  <path d="M8 10a4 4 0 0 1 8 0" />
-                </svg>
-              </span>
-              <p>كارب الوجبة</p>
-              <strong>--</strong>
-              <small>جرام</small>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-icon green">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 16 9 11l4 4 7-7" />
-                  <path d="M15 8h5v5" />
-                </svg>
-              </span>
-              <p>الاتجاه</p>
-              <strong>هادئ</strong>
-              <small>مبدئي</small>
-            </article>
-          </div>
-
-          <div class="module-card input-module">
-            <div class="module-title">
-              <div>
-                <h3>إدخال قراءة جديدة</h3>
-                <p>تسجيل سريع وآمن بدون أي قرار طبي.</p>
-              </div>
-
-              <span class="round-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
-              </span>
-            </div>
-
-            <label for="reading-input">قراءة السكر</label>
-
-            <div class="input-shell">
-              <input id="reading-input" type="text" placeholder="-- mg/dL" disabled />
-              <span>mg/dL</span>
-            </div>
-
-            <div class="context-chips" aria-label="سياق القراءة">
-              <span>صيام</span>
-              <span>قبل الأكل</span>
-              <span>بعد الأكل</span>
-              <span>نشاط</span>
-            </div>
-          </div>
-
-          <article class="insight-card">
-            <span class="round-icon green">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" />
-              </svg>
-            </span>
-
-            <div>
-              <h3>ملاحظة فهيم</h3>
-              <p>
-                فهيم يساعدك تلاحظ النمط، لكن أي قرار علاجي يبقى مع الطبيب أو الفريق الصحي.
-              </p>
-            </div>
-          </article>
+          <div class="screen-heading"><p>صباحك أهدأ مع فهيم</p><h2 id="daily-title">ملخص يوم السكري</h2></div>
+          <article class="overview-card" aria-label="ملخص اليوم"><div class="overview-head"><div><span class="eyebrow">ملخص اليوم</span><h3>ابدأ أول قراءة</h3></div><span class="status-chip"><span></span>جاهز للتسجيل</span></div><div class="reading-row"><strong>--</strong><span>mg/dL</span></div><p class="overview-note">سجّل قراءتك الأولى عشان فهيم يبدأ يفهم يومك.</p><div class="mini-chart" aria-hidden="true"><svg viewBox="0 0 320 96" preserveAspectRatio="none"><path class="grid-line" d="M0 24H320M0 52H320M0 80H320" /><path class="trend-fill" d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44V96H0Z" /><path class="trend-line" d="M0 64C35 54 55 30 92 42C132 56 140 76 182 58C220 42 238 28 276 36C296 40 308 50 320 44" /><circle cx="276" cy="36" r="5" /></svg></div><div class="overview-stats"><div><span>آخر قراءة</span><strong>--</strong></div><div><span>الاتجاه</span><strong>مستقر</strong></div><div><span>ملاحظة اليوم</span><strong>بانتظارك</strong></div></div></article>
+          <div class="metric-grid" aria-label="مؤشرات مختصرة"><article class="metric-card"><span class="metric-icon blue"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-5 4 10 2-5h4" /></svg></span><p>قراءة السكر</p><strong>--</strong><small>mg/dL</small></article><article class="metric-card"><span class="metric-icon coral"><svg viewBox="0 0 24 24"><path d="M6 10h12l-1 9H7l-1-9Z" /><path d="M8 10a4 4 0 0 1 8 0" /></svg></span><p>كارب الوجبة</p><strong>--</strong><small>جرام</small></article><article class="metric-card"><span class="metric-icon green"><svg viewBox="0 0 24 24"><path d="M4 16 9 11l4 4 7-7" /><path d="M15 8h5v5" /></svg></span><p>الاتجاه</p><strong>هادئ</strong><small>مبدئي</small></article></div>
+          <div class="module-card input-module"><div class="module-title"><div><h3>إدخال قراءة جديدة</h3><p>تسجيل سريع وآمن بدون أي قرار طبي.</p></div><span class="round-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></span></div><label for="reading-input">قراءة السكر</label><div class="input-shell"><input id="reading-input" type="text" placeholder="-- mg/dL" disabled /><span>mg/dL</span></div><div class="context-chips" aria-label="سياق القراءة"><span>صيام</span><span>قبل الأكل</span><span>بعد الأكل</span><span>نشاط</span></div></div>
+          <article class="insight-card"><span class="round-icon green"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" /></svg></span><div><h3>ملاحظة فهيم</h3><p>فهيم يساعدك تلاحظ النمط، لكن أي قرار علاجي يبقى مع الطبيب أو الفريق الصحي.</p></div></article>
         </section>
 
-        <section id="carb-search" class="content-section" aria-labelledby="carb-title" hidden>
-          <div class="screen-heading">
-            <p>بحث سريع ونتيجة أوضح</p>
-            <h2 id="carb-title">كم كارب؟</h2>
-          </div>
-
-          <article class="module-card search-module">
-            <label for="food-search">وش الأكل؟</label>
-
-            <div class="search-shell">
-              <input id="food-search" type="search" placeholder="ابحث عن الأكل أو المنتج" disabled />
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="11" cy="11" r="6" />
-                <path d="m20 20-4.2-4.2" />
-              </svg>
-            </div>
-
-            <div class="context-chips">
-              <span>رز</span>
-              <span>خبز</span>
-              <span>حليب</span>
-              <span>فواكه</span>
-            </div>
-          </article>
-
-          <article class="food-result-card">
-            <div class="food-visual" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 14h14a7 7 0 0 1-14 0Z" />
-                <path d="M8 10c2-3 6-3 8 0" />
-              </svg>
-            </div>
-
-            <div class="food-copy">
-              <span class="eyebrow">نتيجة سريعة</span>
-              <h3>أرز أبيض مطبوخ</h3>
-              <p>تقدير أولي قابل للتعديل حسب الكمية.</p>
-            </div>
-
-            <div class="food-number">
-              <strong>45</strong>
-              <span>جم كارب</span>
-            </div>
-          </article>
-
-          <div class="basket-card">
-            <div class="module-title">
-              <h3>سلة الوجبة</h3>
-              <a href="#">مسح الكل</a>
-            </div>
-
-            <div class="basket-row">
-              <span>أرز أبيض مطبوخ</span>
-              <strong>45 جم</strong>
-            </div>
-
-            <div class="basket-row muted">
-              <span>دجاج مشوي</span>
-              <strong>0 جم</strong>
-            </div>
-
-            <div class="total-strip">
-              <span>إجمالي الكارب</span>
-              <strong>45 جم</strong>
-            </div>
-          </div>
-
-          <article class="confidence-card">
-            <div>
-              <h3>درجة الثقة</h3>
-              <p>القيمة تقديرية وتختلف حسب التحضير والكمية.</p>
-            </div>
-
-            <div class="confidence-dots" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </article>
-        </section>
+        <section id="carb-search" class="content-section" aria-labelledby="carb-title" hidden><div class="screen-heading"><p>بحث سريع ونتيجة أوضح</p><h2 id="carb-title">كم كارب؟</h2></div></section>
 
         <section id="faheem-plus" class="content-section" aria-labelledby="plus-title" hidden>
-          <div class="screen-heading">
-            <p>مساعد فهم يومي</p>
-            <h2 id="plus-title">فهيم بلس</h2>
-          </div>
-
-          <article class="assistant-card">
-            <div class="assistant-head">
-              <span class="round-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 6h14v10H9l-4 4V6Z" />
-                  <path d="M9 10h6M9 13h4" />
-                </svg>
-              </span>
-
-              <div>
-                <h3>اسأل فهيم</h3>
-                <p>اكتب سؤالك عن قراءاتك أو كارب وجبتك.</p>
-              </div>
-            </div>
-
-            <textarea id="plus-prompt" placeholder="اسأل فهيم..." disabled></textarea>
-
-            <div class="suggestion-row">
-              <span>ليش ارتفع السكر؟</span>
-              <span>وش معنى الاتجاه؟</span>
-              <span>هل وجبتي عالية؟</span>
-            </div>
-          </article>
-
-          <article class="answer-card">
-            <span class="eyebrow">إجابة تجريبية</span>
-            <h3>ليش يرتفع السكر بعد الأكل؟</h3>
-            <p>
-              يرتفع السكر بعد الأكل لأن الكربوهيدرات تتحول إلى جلوكوز. فهيم يساعدك تربط الوجبة والوقت والقراءة اللاحقة لفهم النمط.
-            </p>
-            <small>معلومة عامة للتنظيم والفهم، وليست نصيحة علاجية.</small>
-          </article>
-
-          <div class="metric-grid plus-metrics">
-            <article class="metric-card">
-              <span class="metric-icon blue">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 18c4-7 8-7 16-12" />
-                  <path d="M15 6h5v5" />
-                </svg>
-              </span>
-              <p>النمط</p>
-              <strong>مبدئي</strong>
-              <small>ينتظر بيانات</small>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-icon coral">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M12 8v5l3 2" />
-                </svg>
-              </span>
-              <p>وقت التكرار</p>
-              <strong>--</strong>
-              <small>غير متاح</small>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-icon green">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5v14" />
-                </svg>
-              </span>
-              <p>ثقتك</p>
-              <strong>هادئة</strong>
-              <small>ابدأ التسجيل</small>
-            </article>
-          </div>
+          <div class="screen-heading"><p>مساعد فهم يومي</p><h2 id="plus-title">فهيم بلس</h2></div>
+          <article class="assistant-card"><div class="assistant-head"><span class="round-icon"><svg viewBox="0 0 24 24"><path d="M5 6h14v10H9l-4 4V6Z" /><path d="M9 10h6M9 13h4" /></svg></span><div><h3>اسأل فهيم</h3><p>اكتب سؤالك عن قراءاتك أو كارب وجبتك.</p></div></div><textarea id="plus-prompt" placeholder="اسأل فهيم..." disabled></textarea><div class="suggestion-row"><span>ليش ارتفع السكر؟</span><span>وش معنى الاتجاه؟</span><span>هل وجبتي عالية؟</span></div></article>
+          <article class="answer-card"><span class="eyebrow">إجابة تجريبية</span><h3>ليش يرتفع السكر بعد الأكل؟</h3><p>يرتفع السكر بعد الأكل لأن الكربوهيدرات تتحول إلى جلوكوز. فهيم يساعدك تربط الوجبة والوقت والقراءة اللاحقة لفهم النمط.</p><small>معلومة عامة للتنظيم والفهم، وليست نصيحة علاجية.</small></article>
         </section>
       </main>
 
-      <nav class="bottom-nav" aria-label="التنقل السفلي">
-        <div class="bottom-nav-shell">
-          <button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 12h4l2-5 4 10 2-5h4" />
-            </svg>
-            <span>نبض يومك</span>
-          </button>
-
-          <button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 10h12l-1 9H7l-1-9Z" />
-              <path d="M8 10a4 4 0 0 1 8 0" />
-            </svg>
-            <span>كم كارب؟</span>
-          </button>
-
-          <button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 6h14v10H9l-4 4V6Z" />
-              <path d="M12 9v5M9.5 11.5h5" />
-            </svg>
-            <span>فهيم بلس</span>
-          </button>
-        </div>
-      </nav>
+      <nav class="bottom-nav" aria-label="التنقل السفلي"><div class="bottom-nav-shell"><button type="button" class="bottom-nav-btn is-active" data-target="daily-pulse" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l2-5 4 10 2-5h4" /></svg><span>نبض يومك</span></button><button type="button" class="bottom-nav-btn" data-target="carb-search" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10h12l-1 9H7l-1-9Z" /><path d="M8 10a4 4 0 0 1 8 0" /></svg><span>كم كارب؟</span></button><button type="button" class="bottom-nav-btn" data-target="faheem-plus" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v10H9l-4 4V6Z" /><path d="M12 9v5M9.5 11.5h5" /></svg><span>فهيم بلس</span></button></div></nav>
     </div>
 
     <script src="app.js"></script>
+    <script>
+      setTimeout(function(){
+        var css=document.createElement('style');
+        css.textContent='.topbar>.icon-button{display:none!important}.topbar{justify-content:center!important}.brand-lockup{margin-inline:auto!important}#carb-search{direction:rtl!important;text-align:right!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:16px!important;border-radius:32px!important;overflow:hidden!important;background:linear-gradient(180deg,#fff7ed 0%,#fffdf8 42%,#eef5f4 100%)!important;box-shadow:0 18px 48px rgba(36,56,64,.10)!important}#carb-search:before,#carb-search:after{display:none!important}.fc{display:grid;gap:12px;width:100%;box-sizing:border-box}.fc *{box-sizing:border-box}.fc-card{border-radius:26px;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.76);box-shadow:0 12px 28px rgba(36,56,64,.07);padding:15px}.fc-hero{background:linear-gradient(145deg,#101928,#263247)!important;color:#fff}.fc-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.fc-hero h3{margin:0;font-size:1.24rem}.fc-hero p{margin:6px 0 0;color:rgba(255,255,255,.78);font-weight:800;line-height:1.7}.fc-orb{width:58px;height:58px;border-radius:24px;display:grid;place-items:center;background:rgba(255,255,255,.13);font-size:1.65rem}.fc-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding:6px;border-radius:999px;background:rgba(255,255,255,.11)}.fc-tabs button{border:0;border-radius:999px;min-height:42px;background:transparent;color:rgba(255,255,255,.72);font-weight:900}.fc-tabs button.active{background:#fff;color:#101928}.fc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.fc-step{padding:11px 6px;border-radius:20px;background:rgba(255,255,255,.76);text-align:center}.fc-step b{display:block;font-size:1.24rem}.fc-step span{display:block;margin-top:3px;color:#697a7d;font-size:.72rem;font-weight:900}.fc-search{display:flex;align-items:center;gap:10px;min-height:58px;padding:0 14px;border-radius:22px;background:#fff;border:1px solid rgba(36,56,64,.08)}.fc-search input{width:100%;border:0;outline:0;background:transparent;font:inherit;font-weight:900}.fc-chips{display:flex;gap:8px;overflow-x:auto;padding-top:10px}.fc-chips button{flex:0 0 auto;border:0;border-radius:999px;background:#fff;padding:9px 13px;color:#5f6f73;font-weight:900;box-shadow:0 7px 16px rgba(36,56,64,.06)}.fc-empty{padding:14px;border-radius:20px;background:#fff;color:#697a7d;font-weight:900;line-height:1.7}.fc-results{display:grid;gap:9px}.fc-hit{width:100%;border:0;display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:11px;border-radius:22px;background:#fff;text-align:right;box-shadow:0 8px 18px rgba(36,56,64,.06)}.fc-hit-emoji{width:48px;height:48px;border-radius:19px;display:grid;place-items:center;background:#fff3e6;font-size:1.45rem}.fc-hit strong{display:block}.fc-hit small{display:block;color:#697a7d;font-weight:800}.fc-hit-num{text-align:center;color:#2438c6;font-weight:900}.fc-answer{display:none;background:linear-gradient(145deg,#fff,#fff8ed)}.fc-answer.show{display:block}.fc-grid,.fc-totals,.fc-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}.fc-box{padding:14px;border-radius:22px;background:#fff}.fc-box.primary{background:linear-gradient(145deg,#2235c7,#5264ff);color:#fff}.fc-box span{display:block;font-size:.75rem;font-weight:800;opacity:.8}.fc-box strong{display:block;font-size:1.34rem;margin-top:4px}.fc-add,.fc-save{width:100%;border:0;border-radius:18px;min-height:48px;margin-top:12px;background:linear-gradient(145deg,#2235c7,#5264ff);color:#fff;font-weight:900}.fc-meal{display:grid;gap:8px;margin-top:10px}.fc-item{display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:center;padding:10px;border-radius:18px;background:#fff}.fc-item small{display:block;color:#697a7d;font-weight:800}.fc-item button{border:0;border-radius:50%;width:30px;height:30px;background:#fff2f2;color:#b74040}@media(max-width:390px){.fc-steps,.fc-grid,.fc-controls,.fc-totals{grid-template-columns:1fr 1fr}.fc-hit{grid-template-columns:46px 1fr}.fc-hit-num{grid-column:2;text-align:right}}';
+        document.head.appendChild(css);
+        var carb=document.getElementById('carb-search'); if(!carb) return;
+        var foods=[{id:'rice',e:'🍚',n:'أرز أبيض مطبوخ',a:['رز','ارز','عيش','رز ابيض'],m:'weight',unit:'كوب مطبوخ',g:160,c100:28,k100:130,conf:'متوسطة',note:'الأدق إذا كان موزون بالجرام.'},{id:'shrimp',e:'🍤',n:'رز أبيض وروبيان',a:['رز وروبيان','روبيان ورز','رز ابيض وروبيان'],m:'mix',unit:'صحن متوسط',range:[45,60],krange:[280,380],conf:'تقريبية',note:'وجبة مركبة. الكارب غالبًا من كمية الرز.'},{id:'suntop',e:'🧃',n:'سن توب برتقال',a:['سن توب','سنتوب'],m:'ready',unit:'عبوة',c:26,k:110,conf:'عالية',note:'منتج جاهز؛ لا يحتاج وزن.'},{id:'milk',e:'🥛',n:'حليب قليل الدسم',a:['حليب','كوب حليب'],m:'unit',unit:'كوب',c:12,k:95,conf:'متوسطة',note:'تختلف القيم حسب نوع الحليب.'},{id:'banana',e:'🍌',n:'موزة متوسطة',a:['موز','موزه'],m:'unit',unit:'حبة متوسطة',c:27,k:105,conf:'متوسطة',note:'القيمة تختلف حسب حجم الموزة.'},{id:'chicken',e:'🍗',n:'دجاج مشوي',a:['دجاج','دجاج مشوي'],m:'zero',unit:'100 جرام',c:0,k:165,conf:'متوسطة',note:'الكارب منخفض جدًا.'}];
+        function calc(f){if(f.m==='weight'){var g=Number(carb.querySelector('.gram')?.value||f.g);return{c:Math.round(f.c100*g/100),k:Math.round(f.k100*g/100),u:g+' جرام'}} if(f.m==='mix')return{c:Math.round((f.range[0]+f.range[1])/2),k:Math.round((f.krange[0]+f.krange[1])/2),u:f.unit,label:f.range[0]+'-'+f.range[1]+' جم'}; return{c:f.c,k:f.k,u:f.unit};}
+        function find(q){q=(q||'').trim().toLowerCase(); if(!q)return[]; return foods.filter(function(f){return [f.n].concat(f.a).some(function(x){x=x.toLowerCase();return x.indexOf(q)>-1||q.indexOf(x)>-1})}).slice(0,6)}
+        carb.innerHTML='<div class="screen-heading"><p>احسبها بسرعة وهدوء</p><h2 id="carb-title">كم كارب؟</h2></div><div class="fc"><article class="fc-card fc-hero"><div class="fc-row"><div><h3>وش بتاكل؟</h3><p>اختاري الأكل، اكتبي الوزن إذا موجود، وفهيم يعطيك الكارب والسعرات فورًا.</p></div><span class="fc-orb">🍽️</span></div><div class="fc-tabs"><button type="button" class="active">بحث سريع</button><button type="button">بالجرام</button></div></article><div class="fc-steps"><div class="fc-step"><b>🍱</b><span>وجبة</span></div><div class="fc-step"><b>⚖️</b><span>وزن</span></div><div class="fc-step"><b>🧃</b><span>منتج</span></div><div class="fc-step"><b>🧺</b><span>سلة</span></div></div><article class="fc-card"><label>ابحثي عن الأكل</label><div class="fc-search"><span>🔎</span><input class="fc-q" placeholder="رز، حليب، سن توب، رز وروبيان..." /></div><div class="fc-chips"><button type="button" data-q="رز">🍚 رز</button><button type="button" data-q="حليب">🥛 حليب</button><button type="button" data-q="موز">🍌 موز</button><button type="button" data-q="سن توب">🧃 سن توب</button><button type="button" data-q="رز وروبيان">🍤 رز وروبيان</button><button type="button" data-q="دجاج">🍗 دجاج</button></div></article><article class="fc-card"><h3>نتائج فهيم</h3><p class="fc-empty">اضغطي اختصار أو اكتبي اسم الأكل. هذه نسخة تجريبية لين نوصل مكتبة Kimi.</p><div class="fc-results"></div></article><article class="fc-card fc-answer"></article><article class="fc-card"><h3>وجبتك الآن</h3><div class="fc-meal"></div><div class="fc-totals"><div class="fc-box primary"><span>إجمالي الكارب</span><strong class="fc-carbs">0 جم</strong></div><div class="fc-box"><span>السعرات</span><strong class="fc-cals">0</strong></div></div><button type="button" class="fc-save">احفظ الوجبة محليًا</button></article></div>';
+        var q=carb.querySelector('.fc-q'),results=carb.querySelector('.fc-results'),answer=carb.querySelector('.fc-answer'),meal=carb.querySelector('.fc-meal'),basket=[];
+        function renderResults(text){var arr=find(text);results.innerHTML='';carb.querySelector('.fc-empty').hidden=arr.length>0;arr.forEach(function(f){var n=calc(f),b=document.createElement('button');b.type='button';b.className='fc-hit';b.innerHTML='<span class="fc-hit-emoji">'+f.e+'</span><span><strong>'+f.n+'</strong><small>'+f.unit+' · ثقة '+f.conf+'</small></span><span class="fc-hit-num">'+(f.m==='mix'?f.range[0]+'-'+f.range[1]:n.c)+'<small>جم كارب</small></span>';b.onclick=function(){show(f)};results.appendChild(b)})}
+        function show(f){var n=calc(f);answer.classList.add('show');var ctr=f.m==='weight'?'<div class="fc-controls"><div class="fc-box"><span>الوزن</span><input class="gram" type="number" value="'+f.g+'"></div><div class="fc-box"><span>الوحدة</span><strong>جرام</strong></div></div>':'<div class="fc-controls"><div class="fc-box"><span>الوحدة</span><strong>'+f.unit+'</strong></div><div class="fc-box"><span>الطريقة</span><strong>'+(f.m==='mix'?'تقدير سريع':'مباشر')+'</strong></div></div>';answer.innerHTML='<div class="fc-row"><span class="fc-orb">'+f.e+'</span><div><h3>'+f.n+'</h3><p class="fc-empty">'+f.note+'</p></div></div><div class="fc-grid"><div class="fc-box primary"><span>الكارب</span><strong>'+(f.m==='mix'?n.label:n.c+' جم')+'</strong></div><div class="fc-box"><span>السعرات</span><strong>'+n.k+'</strong></div></div>'+ctr+'<button type="button" class="fc-add">+ أضف للوجبة</button>';var gram=answer.querySelector('.gram');if(gram)gram.oninput=function(){show(f)};answer.querySelector('.fc-add').onclick=function(){var x=calc(f);basket.push({e:f.e,n:f.n,c:x.c,k:x.k,u:x.u});renderMeal()}}
+        function renderMeal(){meal.innerHTML='';var c=0,k=0;basket.forEach(function(it,i){c+=it.c;k+=it.k;var row=document.createElement('div');row.className='fc-item';row.innerHTML='<span>'+it.e+'</span><span><b>'+it.n+'</b><small>'+it.u+' · '+it.c+' جم كارب · '+it.k+' سعرة</small></span><button type="button">×</button>';row.querySelector('button').onclick=function(){basket.splice(i,1);renderMeal()};meal.appendChild(row)});carb.querySelector('.fc-carbs').textContent=c+' جم';carb.querySelector('.fc-cals').textContent=k}
+        carb.addEventListener('click',function(e){var chip=e.target.closest('.fc-chips button');if(chip){q.value=chip.dataset.q;renderResults(q.value)}});q.oninput=function(){renderResults(q.value)};
+      },250);
+    </script>
   </body>
 </html>
