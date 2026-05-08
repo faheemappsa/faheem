@@ -40,6 +40,13 @@
     if (d <= -15) return 'هابط';
     return 'مستقر';
   }
+  function greet(){
+    const h = new Date().getHours();
+    if (h < 12) return 'صباح الخير';
+    if (h < 17) return 'خلنا نراجع يومك';
+    if (h < 21) return 'مساء الخير';
+    return 'قبل ما ينتهي اليوم';
+  }
   function calcFood(f){
     if (!f) return { carbs:0, calories:0, unit:'' };
     if (f.mode === 'weight') {
@@ -56,18 +63,23 @@
 
   function shell(){
     root.innerHTML = `
+      <div class="splash"><div class="splash-card"><div class="splash-logo">✦</div><h1>فهيم</h1><p>افهم يومك ببساطة</p></div></div>
       <main class="app-main"></main>
       <nav class="bottom-nav" aria-label="تنقل فهيم">
         <div class="bottom-nav-shell">
           <button class="nav-btn active" data-page="home"><span class="nicon">⌂</span><span>الرئيسية</span></button>
           <button class="nav-btn" data-page="carb"><span class="nicon">🧺</span><span>كم كارب؟</span></button>
           <button class="nav-btn" data-page="pulse"><span class="nicon">⌁</span><span>نبض يومك</span></button>
+          <button class="nav-btn" data-page="plus"><span class="nicon">✦</span><span>فهيم بلس</span></button>
         </div>
       </nav>`;
     root.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => go(btn.dataset.page)));
+    setTimeout(()=>root.querySelector('.splash')?.classList.add('hide'), 850);
   }
 
-  function header(sub='جاهز نفهم يومك'){ return `<header class="app-head"><div class="brand-mini"><span class="logo">✦</span><div><h1>فهيم</h1><p>${sub}</p></div></div><button class="head-pill">♡</button></header>`; }
+  function header(sub='جاهز نفهم يومك'){
+    return `<header class="app-head"><div class="brand-mini"><span class="logo">✦</span><div><h1>فهيم</h1><p>${sub}</p></div></div><button class="head-pill" data-go="plus">✦</button></header>`;
+  }
   function setActive(){ root.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.page===page)); }
   function go(p){ page=p; setActive(); render(); }
 
@@ -76,32 +88,41 @@
     if (page === 'home') main.innerHTML = home();
     if (page === 'pulse') main.innerHTML = pulse();
     if (page === 'carb') main.innerHTML = carb();
+    if (page === 'plus') main.innerHTML = plus();
     bind();
   }
 
   function home(){
     const t = todayReadings(); const l = last();
-    return `${header('أهلًا، خلنا نبدأ بهدوء')}
+    const heroTitle = l ? `${greet()}، آخر قراءة ${l.v}` : `${greet()}، نبدأ بصورة واضحة`;
+    const heroText = l ? `عندك ${t.length} قراءة اليوم. فهيم يلخص لك الاتجاه بدل ما يعرض كل رقم.` : 'سجل قراءة أو احسب كارب وجبتك، وخذ ملخص واضح بدون زحمة أرقام.';
+    return `${header('أفهم يومك ببساطة')}
       <section class="section-stack">
         <article class="hero-card">
-          <h3>افهم يومك ببساطة</h3>
-          <p>سجل قراءة، احسب كارب وجبتك، وخذ ملخص واضح بدون زحمة أرقام.</p>
-          <button class="primary-btn" data-go="pulse">ابدأ يومك</button>
+          <div><h3>${heroTitle}</h3><p>${heroText}</p><button class="primary-btn" data-go="pulse">ابدأ الآن</button></div>
+          <div class="hero-art">${l ? '⌁' : '🍽️'}</div>
         </article>
         <div class="grid-3">
           <button class="card gate" data-go="pulse"><span class="ico">⌁</span><h3>نبض يومك</h3><p>آخر قراءة واتجاه اليوم</p></button>
           <button class="card gate active" data-go="carb"><span class="ico">🧺</span><h3>كم كارب؟</h3><p>اعرف كارب أكلك بسرعة</p></button>
-          <button class="card gate" data-go="plus"><span class="ico">✦</span><h3>فهيم بلس</h3><p>تحليل أعمق قريبًا</p></button>
+          <button class="card gate" data-go="plus"><span class="ico">✦</span><h3>فهيم بلس</h3><p>تحليل أعمق ليومك</p></button>
         </div>
         <article class="card">
+          <div class="summary-title"><h3>ملخص اليوم</h3><span>ذكي ومختصر</span></div>
           <div class="summary-grid">
             <div class="summary-box primary"><span>آخر قراءة</span><strong>${l ? l.v : '--'}</strong></div>
             <div class="summary-box"><span>قراءات اليوم</span><strong>${t.length}</strong></div>
             <div class="summary-box"><span>الاتجاه</span><strong>${trend(t)}</strong></div>
           </div>
         </article>
-        <article class="card note-card"><h3>ملاحظة فهيم</h3><p>${t.length ? 'فهيم يلخص لك اليوم بدل ما يعرض كل قراءة. التفاصيل موجودة عند الحاجة فقط.' : 'ابدأ بأول قراءة، وبعدها يبدأ فهيم يبني لك صورة اليوم.'}</p></article>
+        <article class="card note-card"><h3>ملاحظة فهيم</h3><p>${homeNote(t)}</p></article>
       </section>`;
+  }
+
+  function homeNote(t){
+    if (!t.length) return 'ابدأ بأول قراءة أو أول وجبة. فهيم راح يحول الأرقام إلى ملخص مفهوم.';
+    if (t.length === 1) return 'عندك قراءة واحدة فقط. قراءة ثانية مع سياق واضح تخلي الاتجاه يبدأ يظهر.';
+    return `فهيم يلخص ${t.length} قراءات اليوم: الاتجاه ${trend(t)}، والمتوسط ${avg(t)}.`;
   }
 
   function pulse(){
@@ -118,7 +139,7 @@
         <article class="card"><div class="summary-grid"><div class="summary-box"><span>عدد القراءات</span><strong>${t.length}</strong></div><div class="summary-box"><span>متوسط اليوم</span><strong>${avg(t)}</strong></div><div class="summary-box"><span>أعلى قراءة</span><strong>${max(t)}</strong></div></div></article>
         <article class="card input-card"><label>إدخال قراءة جديدة</label><div class="input-line"><input class="reading-input" inputmode="numeric" type="number" placeholder="مثال 126"><span>mg/dL</span></div><div class="context-row" style="margin-top:12px"><button class="chip ${context==='صيام'?'active':''}" data-context="صيام">صيام</button><button class="chip ${context==='قبل الأكل'?'active':''}" data-context="قبل الأكل">قبل الأكل</button><button class="chip ${context==='بعد الأكل'?'active':''}" data-context="بعد الأكل">بعد الأكل</button><button class="chip ${context==='نشاط'?'active':''}" data-context="نشاط">نشاط</button></div><button class="primary-btn save-reading" style="width:100%;margin-top:12px">حفظ القراءة</button></article>
         <article class="card note-card"><h3>ملاحظة فهيم</h3><p>${smartNote(t)}</p></article>
-        <article class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="margin:0">آخر قراءة محفوظة</h3><button class="ghost-btn">عرض التفاصيل</button></div><div class="compact-list">${l ? `<div class="list-row"><b>${l.v}</b><span>${l.ctx}</span><small>${new Date(l.t).toLocaleTimeString('ar-SA',{hour:'numeric',minute:'2-digit'})}</small></div>` : '<p class="unit">لا توجد قراءات بعد.</p>'}</div></article>
+        <article class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="margin:0">آخر قراءة محفوظة</h3><button class="ghost-btn">التفاصيل لاحقًا</button></div><div class="compact-list">${l ? `<div class="list-row"><b>${l.v}</b><span>${l.ctx}</span><small>${new Date(l.t).toLocaleTimeString('ar-SA',{hour:'numeric',minute:'2-digit'})}</small></div>` : '<p class="unit">لا توجد قراءات بعد.</p>'}</div></article>
       </section>`;
   }
 
@@ -146,7 +167,12 @@
   }
 
   function plus(){
-    return `${header('ذكاء أعمق قريبًا')}<section class="section-stack"><article class="card plus-lock"><div class="bot">🤖</div><h3>فهيم بلس</h3><p>مساحة التحليل المتقدم والتقارير الذكية. نخليها للمرحلة الربحية القادمة.</p><button class="primary-btn" data-go="home">العودة للرئيسية</button></article></section>`;
+    return `${header('تحليل أعمق ليومك')}
+      <div class="page-title"><p>فهيم بلس</p><h2>الصورة الكاملة</h2></div>
+      <section class="section-stack">
+        <article class="card plus-lock"><div class="bot">✦</div><h3>تحليل ذكي قابل للتفعيل</h3><p>فهيم بلس يجمع القراءات، يلخص الأنماط، ويحوّل يومك إلى بطاقة تحليل واضحة.</p><button class="primary-btn" data-go="pulse">جرّب تسجيل قراءة</button></article>
+        <article class="card"><div class="summary-title"><h3>ما الذي سيقدمه؟</h3><span>منتجنا القادم</span></div><div class="plus-features"><div class="plus-row"><span>◎</span><div><b>بطاقة تحليل اليوم</b><span>ملخص بصري ذكي بدل زحمة القراءات.</span></div></div><div class="plus-row"><span>⌁</span><div><b>اكتشاف النمط</b><span>قراءات بعد الأكل، الصيام، النشاط، والاتجاه.</span></div></div><div class="plus-row"><span>✦</span><div><b>تقرير أسبوعي</b><span>هدية ذكية قابلة للحفظ والمشاركة لاحقًا.</span></div></div></div></article>
+      </section>`;
   }
 
   function bind(){
