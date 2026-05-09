@@ -44,6 +44,23 @@
   function userName(){ return state.user.name ? ` يا ${state.user.name}` : ''; }
   function mealCarbs(){ return state.meal.reduce((s,x)=>s + Number(x.carbs || 0), 0); }
   function mealCalories(){ return state.meal.reduce((s,x)=>s + Number(x.calories || 0), 0); }
+  function dayProgress(){
+    const t = todayReadings().length;
+    const m = state.meal.length;
+    let score = 0;
+    if(t > 0) score += 35;
+    if(t > 1) score += 20;
+    if(m > 0) score += 35;
+    if(state.user.name) score += 10;
+    return Math.min(score, 100);
+  }
+  function smartHomeText(){
+    const t = todayReadings();
+    if(!t.length && !state.meal.length) return 'ابدأ بخطوة واحدة فقط: احسب كارب الوجبة أو سجل قراءة. بعدها فهيم يبدأ يرتب لك الصورة.';
+    if(state.meal.length && !t.length) return 'ممتاز، عندك وجبة محفوظة. أضف قراءة قبل أو بعد الأكل عشان يبدأ الربط بين الكارب والاتجاه.';
+    if(t.length === 1) return 'عندك قراءة واحدة اليوم. قراءة ثانية مع الوقت تخلي الاتجاه أوضح وأكثر فائدة.';
+    return `الصورة بدأت تتضح: ${t.length} قراءات، الاتجاه ${trend(t)}، وإجمالي الكارب ${mealCarbs()}غ.`;
+  }
 
   async function boot(){
     await loadFoods();
@@ -73,7 +90,18 @@
   function homePage(){
     const t = todayReadings();
     const last = state.readings.at(-1);
-    return `${header()}<section><article class="hero"><div><h1>افهم يومك بدون زحمة</h1><p>سجل قراءة، احسب كارب وجبتك، وخذ ملخص واضح يساعدك تفهم الاتجاه.</p><button class="cta" data-page="carb">ابدأ الآن</button></div><div class="art">📊</div></article><div class="quick"><button data-page="home"><div class="qicon">💚</div><b>نبض يومك</b><span>آخر قراءة واتجاه اليوم</span></button><button data-page="carb"><div class="qicon">🍚</div><b>كم كارب؟</b><span>احسب كارب أكلك بسرعة</span></button><button data-page="plus"><div class="qicon">✦</div><b>فهيم بلس</b><span>تحليل أعمق وملخص ذكي</span></button></div><article class="card"><div class="row-title"><h3>ملخص اليوم</h3><span>اليوم</span></div><div class="stats"><div class="stat"><i>💧</i><b>${last ? last.value : '--'}</b><span>آخر قراءة</span></div><div class="stat"><i>🍽️</i><b>${mealCarbs()}</b><span>كارب الوجبة</span></div><div class="stat"><i>📈</i><b>${trend(t)}</b><span>الاتجاه</span></div></div></article><article class="card"><div class="row-title"><h3>اتجاه السكر</h3><span>${t.length ? `${t.length} قراءات` : 'بانتظارك'}</span></div><div class="chart"><svg viewBox="0 0 320 120"><path class="gridline" d="M0 30H320M0 65H320M0 100H320"/><path class="area" d="M0 78C48 58 76 92 112 64C150 35 178 80 218 54C260 26 285 69 320 50V120H0Z"/><path class="line" d="M0 78C48 58 76 92 112 64C150 35 178 80 218 54C260 26 285 69 320 50"/></svg></div></article><article class="card notice"><span>✨</span><p class="empty">${state.user.name ? 'فهيم بدأ يتعرف على يومك. كل قراءة أو وجبة تضيفها تجعل الملخص أوضح.' : 'اكتب اسمك من فهيم بلس لاحقًا لتبدأ تجربة شخصية أكثر.'}</p></article></section>`;
+    const progress = dayProgress();
+    const hasAny = t.length || state.meal.length;
+    return `${header()}<section>
+      <div class="home-kicker"><span>فهيم اليوم</span><b>${hasAny ? 'يقرأ يومك خطوة بخطوة' : 'جاهز يبدأ معك من أول خطوة'}</b></div>
+      <article class="hero home-hero"><div><h1>${hasAny ? 'يومك صار أوضح' : 'افهم يومك بدون قلق'}</h1><p>${hasAny ? 'كل قراءة أو وجبة تضيفها تتحول إلى معنى واضح، مو أرقام متفرقة.' : 'ابدأ بوجبة أو قراءة واحدة، وفهيم يرتب لك الصورة بهدوء.'}</p><button class="cta" data-page="carb">احسب أول وجبة</button></div><div class="art">${hasAny ? '📈' : '🧭'}</div></article>
+      <article class="card progress-card"><div class="ring" style="--p:${progress}%"><b>${progress || '--'}%</b></div><div><h3>${progress ? 'تقدم يومك' : 'بانتظار أول خطوة'}</h3><p class="empty">${progress ? 'كل إدخال يساعد فهيم يفهم النمط بشكل أدق.' : 'لا تحتاج تبدأ بكل شيء. خطوة واحدة تكفي.'}</p></div></article>
+      <div class="quick primary-actions"><button data-page="carb" class="main-action"><div class="qicon">🍚</div><b>كم كارب؟</b><span>أسرع خطوة يومية</span></button><button id="focusReading"><div class="qicon">💧</div><b>سجل قراءة</b><span>أضف رقم السكر الآن</span></button><button data-page="plus"><div class="qicon">✦</div><b>فهيم بلس</b><span>شوف التحليل الأعمق</span></button></div>
+      <article class="card quick-reading" id="readingBox"><div class="row-title"><h3>قراءة سريعة</h3><span>mg/dL</span></div><div class="reading-line"><input id="quickReadingInput" inputmode="numeric" type="number" placeholder="مثال 126"><button id="saveReading">حفظ</button></div></article>
+      <article class="card"><div class="row-title"><h3>ملخص اليوم</h3><span>${t.length ? `${t.length} قراءات` : 'بداية جديدة'}</span></div><div class="stats"><div class="stat"><i>💧</i><b>${last ? last.value : '--'}</b><span>آخر قراءة</span></div><div class="stat"><i>🍽️</i><b>${mealCarbs()}</b><span>كارب الوجبة</span></div><div class="stat"><i>📈</i><b>${trend(t)}</b><span>الاتجاه</span></div></div></article>
+      <article class="card"><div class="row-title"><h3>اتجاه السكر</h3><span>${t.length ? 'يتكوّن الآن' : 'رسم تجريبي'}</span></div><div class="chart"><svg viewBox="0 0 320 120"><path class="gridline" d="M0 30H320M0 65H320M0 100H320"/><path class="area" d="M0 78C48 58 76 92 112 64C150 35 178 80 218 54C260 26 285 69 320 50V120H0Z"/><path class="line" d="M0 78C48 58 76 92 112 64C150 35 178 80 218 54C260 26 285 69 320 50"/></svg></div></article>
+      <article class="card notice smart-note"><span>✨</span><div><b>رؤية فهيم</b><p class="empty">${smartHomeText()}</p></div></article>
+    </section>`;
   }
   function carbPage(){
     return `${header()}<section><article class="hero"><div><h2>كم كارب؟</h2><p>ابحث عن أكلك أو مشروبك، وشوف تقدير الكارب والسعرات بسرعة.</p></div><div class="art">🍚</div></article><div class="search"><span>🔎</span><input id="foodSearch" placeholder="رز، خبز، حليب، تمر..."></div><div class="chips"><button class="chip" data-food="رز">رز</button><button class="chip" data-food="خبز">خبز</button><button class="chip" data-food="حليب">حليب</button><button class="chip" data-food="تمر">تمر</button><button class="chip" data-food="كبسة">كبسة</button></div><div class="food-art">🍽️</div><article class="card"><div class="row-title"><h3>نتائج فهيم</h3><span>اختر صنف</span></div><div class="food-list" id="foodResults"><p class="empty">اكتب اسم الأكل أو اختر من الاختصارات.</p></div></article><article class="card answer" id="answer"></article><article class="card"><div class="row-title"><h3>سلة الوجبة</h3><span>${state.meal.length} عناصر</span></div><div class="meal">${mealRows()}</div><div class="boxes"><div class="box main"><span>إجمالي الكارب</span><b>${mealCarbs()} غ</b></div><div class="box"><span>السعرات</span><b>${mealCalories()}</b></div></div></article></section>`;
@@ -94,6 +122,16 @@
     document.querySelectorAll('[data-remove]').forEach(btn => btn.onclick = () => { state.meal.splice(Number(btn.dataset.remove),1); save(); render(); });
     const saveNameBtn = document.getElementById('saveNameBtn');
     if(saveNameBtn) saveNameBtn.onclick = () => { const input = document.getElementById('nameInput'); state.user.name = (input?.value || '').trim(); save(); render(); };
+    const focusReading = document.getElementById('focusReading');
+    if(focusReading) focusReading.onclick = () => document.getElementById('quickReadingInput')?.focus();
+    const saveReading = document.getElementById('saveReading');
+    if(saveReading) saveReading.onclick = () => {
+      const input = document.getElementById('quickReadingInput');
+      const value = Number(input?.value || 0);
+      if(!value || value < 30 || value > 600) return;
+      state.readings.push({ value, time: Date.now(), context:'سريعة' });
+      save(); render();
+    };
   }
   function searchFood(query){
     const list = document.getElementById('foodResults');
