@@ -1,0 +1,8 @@
+[
+  {"id":"rice-white","name":"رز أبيض مطبوخ","aliases":["رز","ارز","أرز","رز أبيض"],"emoji":"🍚","unit":"120 غرام","carbs":34,"calories":156,"confidence":"عالية","note":"تقدير مبني على الرز الأبيض المطبوخ."},
+  {"id":"bread-samoli","name":"خبز صمون","aliases":["صمون","صامولي","خبز"],"emoji":"🍞","unit":"حبة صغيرة","carbs":20,"calories":108,"confidence":"متوسطة","note":"تختلف القيمة حسب الحجم والمخبز."},
+  {"id":"milk-low-fat","name":"حليب قليل الدسم","aliases":["حليب","كوب حليب"],"emoji":"🥛","unit":"كوب","carbs":12,"calories":95,"confidence":"عالية","note":"راجع الملصق الغذائي عند اختلاف النوع."},
+  {"id":"date","name":"تمرة","aliases":["تمر","تمرة"],"emoji":"🌴","unit":"حبة","carbs":6,"calories":23,"confidence":"متوسطة","note":"الحجم والنوع يغيران القيمة."},
+  {"id":"apple","name":"تفاحة","aliases":["تفاح","تفاحة"],"emoji":"🍎","unit":"حبة متوسطة","carbs":25,"calories":95,"confidence":"عالية","note":"تقدير للحبة المتوسطة."},
+  {"id":"kabsa","name":"كبسة دجاج","aliases":["كبسة","كبسه"],"emoji":"🍛","unit":"صحن متوسط","carbs":70,"calories":520,"confidence":"تقريبية","note":"تعتمد على كمية الرز في الصحن."}
+]
