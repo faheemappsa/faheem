@@ -1,9 +1,0 @@
-[
-  {"id":"rice-white-cooked","name":"أرز أبيض مطبوخ","aliases":["رز","ارز","أرز أبيض","رز ابيض"],"emoji":"🍚","type":"weight","defaultGrams":160,"carbsPer100g":28,"caloriesPer100g":130,"note":"الأدق حسابه بالجرام بعد الطبخ."},
-  {"id":"bread-samoli-small","name":"صمون صغير","aliases":["صمون","صامولي","خبز صمون"],"emoji":"🍞","type":"unit","unit":"حبة","carbs":20,"calories":108,"note":"تختلف القيمة حسب الحجم."},
-  {"id":"kabsa-chicken-medium","name":"كبسة دجاج","aliases":["كبسة","كبسه"],"emoji":"🍛","type":"unit","unit":"صحن متوسط","carbs":70,"calories":520,"note":"تقدير تقريبي حسب كمية الرز."},
-  {"id":"milk-low-fat-cup","name":"حليب قليل الدسم","aliases":["حليب","كوب حليب"],"emoji":"🥛","type":"unit","unit":"كوب","carbs":12,"calories":95,"note":"تختلف القيم حسب نوع الحليب."},
-  {"id":"date-one","name":"تمرة واحدة","aliases":["تمر","تمرة"],"emoji":"🌴","type":"unit","unit":"حبة","carbs":6,"calories":23,"note":"تختلف حسب نوع التمر وحجمه."},
-  {"id":"suntop-orange","name":"سن توب برتقال","aliases":["سن توب","سنتوب"],"emoji":"🧃","type":"unit","unit":"عبوة","carbs":26,"calories":110,"note":"منتج جاهز؛ احسبه بعدد العبوات."},
-  {"id":"chicken-grilled","name":"دجاج مشوي","aliases":["دجاج","صدر دجاج"],"emoji":"🍗","type":"weight","defaultGrams":100,"carbsPer100g":0,"caloriesPer100g":165,"note":"الكارب منخفض جدًا."}
-]
