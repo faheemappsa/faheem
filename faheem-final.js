@@ -34,7 +34,7 @@
   function max(arr){ return arr.length ? Math.max(...arr.map(r=>r.v)) : '--'; }
   function last(){ return state.readings.at(-1) || null; }
   function trend(arr){
-    if (arr.length < 2) return 'بانتظار أكثر';
+    if (arr.length < 2) return 'بانتظار';
     const d = arr.at(-1).v - arr.at(-2).v;
     if (d >= 15) return 'صاعد';
     if (d <= -15) return 'هابط';
@@ -43,9 +43,9 @@
   function greet(){
     const h = new Date().getHours();
     if (h < 12) return 'صباح الخير';
-    if (h < 17) return 'خلنا نراجع يومك';
+    if (h < 17) return 'مرحبًا';
     if (h < 21) return 'مساء الخير';
-    return 'قبل ما ينتهي اليوم';
+    return 'أهلًا بك';
   }
   function calcFood(f){
     if (!f) return { carbs:0, calories:0, unit:'' };
@@ -78,7 +78,7 @@
   }
 
   function header(sub='جاهز نفهم يومك'){
-    return `<header class="app-head"><div class="brand-mini"><span class="logo">✦</span><div><h1>فهيم</h1><p>${sub}</p></div></div><button class="head-pill" data-go="plus">✦</button></header>`;
+    return `<header class="app-head"><div class="brand-mini"><span class="logo">✦</span><div><h1>فهيم</h1><p>${sub}</p></div></div><button class="head-pill" data-go="plus">🔔</button></header>`;
   }
   function setActive(){ root.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.page===page)); }
   function go(p){ page=p; setActive(); render(); }
@@ -94,35 +94,34 @@
 
   function home(){
     const t = todayReadings(); const l = last();
-    const heroTitle = l ? `${greet()}، آخر قراءة ${l.v}` : `${greet()}، نبدأ بصورة واضحة`;
-    const heroText = l ? `عندك ${t.length} قراءة اليوم. فهيم يلخص لك الاتجاه بدل ما يعرض كل رقم.` : 'سجل قراءة أو احسب كارب وجبتك، وخذ ملخص واضح بدون زحمة أرقام.';
-    return `${header('أفهم يومك ببساطة')}
-      <section class="section-stack">
-        <article class="hero-card">
-          <div><h3>${heroTitle}</h3><p>${heroText}</p><button class="primary-btn" data-go="pulse">ابدأ الآن</button></div>
-          <div class="hero-art">${l ? '⌁' : '🍽️'}</div>
+    const hasData = t.length > 0;
+    const heroTitle = hasData ? 'فهيم يلخص يومك بدل زحمة الأرقام' : 'نحن هنا لنفهم سكر الدم والكارب معًا';
+    const heroText = hasData ? `عندك ${t.length} قراءة اليوم. نختصرها لك باتجاه واضح وخطوة تالية.` : 'ابدأ بقراءة أو وجبة، وخلي فهيم يحول التفاصيل إلى معنى بسيط ومطمئن.';
+    return `${header('نحن هنا لنفهم سكر الدم والكارب معًا')}
+      <section class="fm-home">
+        <div class="fm-hello"><small>${greet()} 👋</small><strong>${hasData ? 'جاهز نكمل من آخر نقطة' : 'خلنا نبدأ بهدوء ووضوح'}</strong></div>
+        <article class="fm-hero">
+          <div><h2>${heroTitle}</h2><p>${heroText}</p><button class="primary-btn" data-go="${hasData ? 'pulse' : 'carb'}">${hasData ? 'افتح نبض يومك' : 'ابدأ أول خطوة'}</button></div>
+          <div class="fm-hero-ill">${hasData ? '📈' : '🧑‍⚕️'}</div>
         </article>
-        <div class="grid-3">
-          <button class="card gate" data-go="pulse"><span class="ico">⌁</span><h3>نبض يومك</h3><p>آخر قراءة واتجاه اليوم</p></button>
-          <button class="card gate active" data-go="carb"><span class="ico">🧺</span><h3>كم كارب؟</h3><p>اعرف كارب أكلك بسرعة</p></button>
-          <button class="card gate" data-go="plus"><span class="ico">✦</span><h3>فهيم بلس</h3><p>تحليل أعمق ليومك</p></button>
-        </div>
-        <article class="card">
-          <div class="summary-title"><h3>ملخص اليوم</h3><span>ذكي ومختصر</span></div>
-          <div class="summary-grid">
-            <div class="summary-box primary"><span>آخر قراءة</span><strong>${l ? l.v : '--'}</strong></div>
-            <div class="summary-box"><span>قراءات اليوم</span><strong>${t.length}</strong></div>
-            <div class="summary-box"><span>الاتجاه</span><strong>${trend(t)}</strong></div>
-          </div>
-        </article>
-        <article class="card note-card"><h3>ملاحظة فهيم</h3><p>${homeNote(t)}</p></article>
+        <section class="fm-status">
+          <article class="fm-ring"><div class="fm-ring-ui"><span>${hasData ? '82%' : '--'}</span></div><div><b>${hasData ? 'يومك يتكوّن' : 'بانتظار أول بياناتك'}</b><small>${hasData ? 'فهيم يبدأ يقرأ النمط من قراءات اليوم.' : 'سجل قراءة أو احسب وجبة حتى يبدأ فهيم يفهمك.'}</small></div></article>
+          <div class="fm-mini-stats"><div class="fm-mini"><span>آخر قراءة</span><strong>${l ? l.v : '--'}</strong></div><div class="fm-mini"><span>الاتجاه</span><strong>${trend(t)}</strong></div></div>
+        </section>
+        <section class="fm-actions">
+          <button class="fm-action active" data-go="carb"><span class="ico">🧺</span><b>كم كارب؟</b><span>اعرف كارب أكلك بسرعة</span></button>
+          <button class="fm-action" data-go="pulse"><span class="ico">⌁</span><b>نبض يومك</b><span>آخر قراءة واتجاه اليوم</span></button>
+          <button class="fm-action" data-go="plus"><span class="ico">✦</span><b>فهيم بلس</b><span>تحليل أعمق قريب منك</span></button>
+        </section>
+        <article class="fm-insight"><h3>رؤية فهيم</h3><p>${homeNote(t)}</p></article>
+        <article class="fm-next-step"><span class="round">${hasData ? '⌁' : '＋'}</span><div><b>${hasData ? 'خطوتك التالية' : 'ابدأ الآن'}</b><span>${hasData ? 'أضف قراءة ثانية مع سياقها حتى يظهر الاتجاه بدقة.' : 'احسب كارب وجبتك أو سجل أول قراءة.'}</span></div><button class="primary-btn" data-go="${hasData ? 'pulse' : 'carb'}">الآن</button></article>
       </section>`;
   }
 
   function homeNote(t){
-    if (!t.length) return 'ابدأ بأول قراءة أو أول وجبة. فهيم راح يحول الأرقام إلى ملخص مفهوم.';
-    if (t.length === 1) return 'عندك قراءة واحدة فقط. قراءة ثانية مع سياق واضح تخلي الاتجاه يبدأ يظهر.';
-    return `فهيم يلخص ${t.length} قراءات اليوم: الاتجاه ${trend(t)}، والمتوسط ${avg(t)}.`;
+    if (!t.length) return 'فهيم لا يحتاج منك كل شيء دفعة واحدة. أول قراءة أو أول وجبة تكفي لبداية الصورة.';
+    if (t.length === 1) return 'عندك قراءة واحدة. قراءة ثانية مع توقيتها تخلي فهيم يبدأ يوضح الاتجاه.';
+    return `اليوم عندك ${t.length} قراءات. الاتجاه ${trend(t)}، والمتوسط ${avg(t)}. فهيم يختصر لك الصورة بدل عرض كل رقم.`;
   }
 
   function pulse(){
@@ -139,7 +138,6 @@
         <article class="card"><div class="summary-grid"><div class="summary-box"><span>عدد القراءات</span><strong>${t.length}</strong></div><div class="summary-box"><span>متوسط اليوم</span><strong>${avg(t)}</strong></div><div class="summary-box"><span>أعلى قراءة</span><strong>${max(t)}</strong></div></div></article>
         <article class="card input-card"><label>إدخال قراءة جديدة</label><div class="input-line"><input class="reading-input" inputmode="numeric" type="number" placeholder="مثال 126"><span>mg/dL</span></div><div class="context-row" style="margin-top:12px"><button class="chip ${context==='صيام'?'active':''}" data-context="صيام">صيام</button><button class="chip ${context==='قبل الأكل'?'active':''}" data-context="قبل الأكل">قبل الأكل</button><button class="chip ${context==='بعد الأكل'?'active':''}" data-context="بعد الأكل">بعد الأكل</button><button class="chip ${context==='نشاط'?'active':''}" data-context="نشاط">نشاط</button></div><button class="primary-btn save-reading" style="width:100%;margin-top:12px">حفظ القراءة</button></article>
         <article class="card note-card"><h3>ملاحظة فهيم</h3><p>${smartNote(t)}</p></article>
-        <article class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="margin:0">آخر قراءة محفوظة</h3><button class="ghost-btn">التفاصيل لاحقًا</button></div><div class="compact-list">${l ? `<div class="list-row"><b>${l.v}</b><span>${l.ctx}</span><small>${new Date(l.t).toLocaleTimeString('ar-SA',{hour:'numeric',minute:'2-digit'})}</small></div>` : '<p class="unit">لا توجد قراءات بعد.</p>'}</div></article>
       </section>`;
   }
 
